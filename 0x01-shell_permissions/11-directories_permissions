@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R ogu+x << pwd
+chmod -R ogu+x . 
