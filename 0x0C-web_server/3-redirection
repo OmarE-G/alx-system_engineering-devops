@@ -3,7 +3,7 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 
-sudo chown -R $USER:$USER /var/www
+sudo chown -R "$USER":"$USER" /var/www
 
 # Create Hello world page
 echo 'Hello World!' > /var/www/html/index.html
