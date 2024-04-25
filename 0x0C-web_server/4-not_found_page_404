@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Install nginx and set up a redirect
+sudo apt-get update
+sudo apt-get -y install nginx
+
+sudo chown -R "$USER":"$USER" /var/www
+
+# Create Hello world page
+echo 'Hello World!' > /var/www/html/index.html
+
+sudo sed -i '/server_name _;/a \\n\tlocation /redirect_me {\n\t\treturn 301 https://hackerone.com/hack3dby0mar;\n\t}' /etc/nginx/sites-available/default 
+
+echo "OOpsies... you got lost, there's nothing here" > /var/www/html/404.html
+
+sudo sed -i 's@try_files \$uri \$uri/ =404;@try_files \$uri \$uri/ /404.html =404;@' /etc/nginx/sites-available/default
+
+sudo echo "error_page 404 /error_pages/404.html;" | sudo tee  /etc/nginx/sites-available/default 
+# Restart Nginx
+sudo service nginx restart
+
