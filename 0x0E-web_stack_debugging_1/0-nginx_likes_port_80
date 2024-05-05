@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Get apache running on port 80
+
+sudo apt-get update -y
+sudo service apache2 stop
+sudo apt install nginx -y
+sudo service nginx start
