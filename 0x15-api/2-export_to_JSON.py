@@ -11,12 +11,15 @@ if __name__ == '__main__':
     id = argv[1]
     data = requests.get(url + f"/todos?userId={id}").json()
     tasks = {}
-
+    tasks[str(id)] = []
     name = requests.get(url + f"/users/{id}").json()['username']
     for task in data:
-        tasks[str(id)]['username'] = name
-        tasks[str(id)]["task"] = task["title"]
-        tasks[str(id)]["completed"] = task["completed"]
-        
+        task_info = {
+            "task": task["title"],
+            "username": name,
+            "completed": task["completed"]
+        }
+        tasks[str(id)].append(task_info)
+
     with open(f'{id}.json', 'w', newline='') as file:
         json.dump(tasks, file)
