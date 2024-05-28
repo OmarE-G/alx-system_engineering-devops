@@ -12,7 +12,7 @@ if __name__ == '__main__':
     data = requests.get(url + f"/todos?userId={id}").json()
     done = []
 
-    name = requests.get(url + f"/users/{id}").json()['name']
+    name = requests.get(url + f"/users/{id}").json()['username']
     with open(f'{id}.csv', 'w', newline='') as file:
         for task in data:
             writer = csv.writer(file, quoting=csv.QUOTE_ALL)
