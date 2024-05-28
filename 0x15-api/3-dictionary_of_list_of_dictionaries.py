@@ -17,7 +17,6 @@ if __name__ == '__main__':
     users = requests.get(url + "/users").json()
     tasks = {}
     for task in data:
-        i += 1
         id = task["userId"]
         if not tasks.get(str(id)):
             tasks[str(id)] = []
