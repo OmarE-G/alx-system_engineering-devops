@@ -17,6 +17,6 @@ if __name__ == '__main__':
             done.append(task)
 
     name = requests.get(url + f"/users/{id}").json()['name']
-    print(f"Employee {name} is done with tasks({len(done)}/{len(data)})")
+    print(f"Employee {name} is done with tasks({len(done)}/{len(data)}):")
     for task in done:
         print(f"\t {task['title']}")
