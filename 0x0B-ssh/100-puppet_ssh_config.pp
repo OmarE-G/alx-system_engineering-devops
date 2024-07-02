@@ -8,5 +8,5 @@ $content = 'Host alx-1
 
 file { '/etc/ssh/ssh_config':
   ensure  => file,
-  content => $content,
+  content => $content
 }
